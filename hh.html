@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="dangnhap.css">
+</head>
+<body>
+<div class="login">
+    <h2> FORM</h2>
+    <br>
+    <p> email or sdt</p>
+    <br>
+    <input id="nhapemail" type="text" placeholder=" enter email">
+    <br>
+    <p> password</p>
+    <br>
+    <input id="nhappassword" type="password" placeholder="enter password">
+    <br>
+    <div>
+        <input type="checkbox">
+        Remeber me
+    </div>
+    <div>
+        <button onclick="dangki()"> đăng kí</button>
+        <button onclick="dangnhap()"> đăng nhập</button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let a = ["toan7777"]
+    let b = ["123"]
+
+
+    function dangki() {
+        let nhapemail = document.getElementById("nhapemail").value;
+        let nhappassword = document.getElementById("nhappassword").value;
+        a.push(nhapemail)
+        b.push(nhappassword)
+    }
+
+    function dangnhap() {
+        let nhapemail = document.getElementById("nhapemail").value;
+        let nhappassword = document.getElementById("nhappassword").value;
+        for (let i = 0; i < a.length; i++) {
+            if (nhapemail === a[i] && nhappassword === b[i]) {
+                alert("Dang nhap thanh cong!");
+                window.location = "case.html"
+                return;
+            }
+        }
+        alert("Dang nhap that bai!")
+    }
+</script>

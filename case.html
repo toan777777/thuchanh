@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="casecss.css">
+</head>
+<body>
+<div>
+    <header>
+        <h1 style="text-align: center"> ảnh vui hài hước</h1>
+    </header>
+    <nav>
+        <div class="menu">
+            <ul>
+                <li><a href="https://xem.vn/video/chuyen-muc-quay-ve-tuoi-tho-080750.html"> Trang chủ </a></li>
+                <li><a href=""> Hot</a></li>
+                <li><a href=""> Bình chọn</a></li>
+                <li><a href=""> Cũ </a></li>
+                <li style="float: right"><a href="">
+                    <button type="button"> đăng nhập</button>
+                </a></li>
+            </ul>
+        </div>
+        <!--        <div class="dangnhap">-->
+        <!--            <button type="button"> đăng nhập</button>-->
+        <!--        </div>-->
+    </nav>
+</div>
+name:<input type="text" placeholder=" nhập tiêu đề " id="cc"><br>
+Img: <input type="text" placeholder="đường dẫn ảnh" id="aa"><br>
+<button onclick="add()"> ADD</button>
+<div id="show"></div>
+
+</body>
+</html>
+<script>
+    class haihuoc {
+        name;
+        img;
+
+        constructor(name, img) {
+            this.name = name;
+            this.img = img;
+        }
+    }
+
+    let a = new haihuoc("quá đen cho 2 anh chị", "https://xem.vn/qua-den-cho-2-anh-chi-1406201.html");
+    let b = new haihuoc("sao đánh tôi", "https://xem.vn/sao-danh-tui-1405636.html");
+    let names = [a, b];
+    let divshow = document.getElementById("show");
+
+    function show() {
+        let str = "<table>";
+        for (let i = 0; i < names.length; i++) {
+            str +=
+                `<tr>
+                    <td><img src="${names[i].img}" width="800" height="500"></td>
+                    <td>${names[i].name}</td>
+                    <td> <button onclick="edit(${i})"> Edit</button></td>
+                    <td><button onclick="xoa(${i})"> Delete</button></td>
+                </tr>`
+        }
+        str += "</table>"
+        divshow.innerHTML = str;
+
+    }
+
+    show();
+    function add(){
+        let m = document.getElementById("cc").value;
+        let n = document.getElementById("aa").value;
+        let haihuoc1= new haihuoc(m, n);
+        names.push(haihuoc1);
+        show();
+
+    }
+    function xoa(index){
+        names.splice(index,1);
+        show ();
+    }
+    function edit(index) {
+        let name = prompt("Nhập name muốn sửa");
+        let img = prompt("Nhập img muốn sửa");
+        let newObj = new haihuoc(name,img);
+        names.splice(index, 1, newObj);
+        show();
+    }
+</script>
